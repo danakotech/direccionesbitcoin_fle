@@ -9,6 +9,7 @@ import QRCode from 'qrcode';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import { inject } from '@vercel/analytics';
 import { dict, type Lang } from './i18n';
 import { renderBody } from './content';
 import type { SceneApi } from './scene';
@@ -400,6 +401,9 @@ function boot() {
 }
 
 async function start() {
+  // Initialize Vercel Web Analytics
+  inject();
+  
   boot();
   document.documentElement.classList.add('ready');
   // Sin autoría original no hay web
